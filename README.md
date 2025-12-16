@@ -14,6 +14,16 @@ This server provides Claude Code (and other MCP clients) with full access to Com
 - **Node discovery**: List available nodes, models, and their parameters
 - **Image generation**: Simple prompt-based generation or full workflow control
 
+## Key Features
+
+### ✅ Schema-Validated Workflows
+All generated workflows are validated against the **ComfyUI v0.4 workflow schema**, ensuring compatibility and correct execution. No more invalid workflow errors.
+
+### 🎨 Beautiful Visual Layout
+Programmatically generated workflows have **coherent node positions** with proper spacing and alignment. The built-in layout engine produces untangled, professional-looking workflows that are easy to read and modify in the ComfyUI editor.
+
+**Technical**: Uses graph-based layout algorithms (NetworkX) to automatically position nodes, eliminating the typical spaghetti diagrams from programmatic workflow generation.
+
 ## Prerequisites
 
 - [uv](https://docs.astral.sh/uv/) - Python package manager
@@ -22,9 +32,20 @@ This server provides Claude Code (and other MCP clients) with full access to Com
 
 ## Installation
 
+### Via PyPI (Recommended)
+
 ```bash
-# Install from source
-git clone https://github.com/DanEscher98/comfyui-mcp.git
+# Run directly with uvx
+uvx comfyui-easy-mcp
+
+# Or install globally
+uv pip install comfyui-easy-mcp
+```
+
+### From Source
+
+```bash
+git clone https://github.com/IO-AtelierTech/comfyui-mcp.git
 cd comfyui-mcp
 uv sync
 ```
@@ -64,8 +85,8 @@ export OUTPUT_MODE=file
 {
   "mcpServers": {
     "ComfyUI": {
-      "command": "uv",
-      "args": ["--directory", "/path/to/comfyui-mcp", "run", "comfyui-mcp"],
+      "command": "uvx",
+      "args": ["comfyui-easy-mcp"],
       "env": {
         "COMFY_URL": "http://localhost:8188",
         "COMFY_WORKFLOWS_DIR": "/path/to/workflows-api",
@@ -78,6 +99,8 @@ export OUTPUT_MODE=file
   }
 }
 ```
+
+Or use the pre-configured `.mcp.json` from [comfyui-template](https://github.com/IO-AtelierTech/comfyui-template).
 
 ## Available Tools
 
