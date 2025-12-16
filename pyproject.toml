@@ -1,0 +1,103 @@
+[project]
+name = "io-ateliertech-comfyui-mcp"
+version = "0.2.0"
+description = "MCP server for ComfyUI workflow automation by IO-AtelierTech"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.2.1",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "coolname>=2.0.0",
+    "networkx>=3.0",
+]
+authors = [
+    {name = "Karim Lalani", email = "jimmy00784@gmail.com"},
+    {name = "Daniel Sanchez", email = "dan.escherdoc@gmail.com"},
+]
+maintainers = [
+    {name = "IO-AtelierTech", email = "dan.escherdoc@gmail.com"},
+]
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["mcp", "comfyui", "claude", "ai", "image-generation", "workflow", "io-ateliertech"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-anyio>=0.0.0",
+    "inline-snapshot>=0.10.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/IO-AtelierTech/comfyui-mcp"
+Repository = "https://github.com/IO-AtelierTech/comfyui-mcp"
+Documentation = "https://github.com/IO-AtelierTech/comfyui-mcp/blob/main/README.md"
+Issues = "https://github.com/IO-AtelierTech/comfyui-mcp/issues"
+
+[project.scripts]
+comfy-mcp-server = "comfy_mcp_server:run_server"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/comfy_mcp_server"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+markers = [
+    "integration: marks tests as integration tests (deselect with '-m \"not integration\"')",
+]
+testpaths = ["tests"]
+
+[tool.hatch.version]
+path = "src/comfy_mcp_server/__init__.py"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes
+    "I",      # isort
+    "B",      # flake8-bugbear
+    "C4",     # flake8-comprehensions
+    "UP",     # pyupgrade
+    "ARG",    # flake8-unused-arguments
+    "SIM",    # flake8-simplify
+]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+    "B008",   # do not perform function calls in argument defaults
+    "ARG001", # unused function argument (common in MCP tools)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["comfy_mcp_server"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.8",
+]
