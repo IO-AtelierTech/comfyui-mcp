@@ -1,6 +1,6 @@
 [project]
-name = "io-ateliertech-comfyui-mcp"
-version = "0.2.0"
+name = "comfyui-easy-mcp"
+version = "0.2.1"
 description = "MCP server for ComfyUI workflow automation by IO-AtelierTech"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -12,11 +12,10 @@ dependencies = [
     "networkx>=3.0",
 ]
 authors = [
-    {name = "Karim Lalani", email = "jimmy00784@gmail.com"},
-    {name = "Daniel Sanchez", email = "dan.escherdoc@gmail.com"},
+    {name = "Danyiel Colin", email = "danyiel5978@gmail.com"},
 ]
 maintainers = [
-    {name = "IO-AtelierTech", email = "dan.escherdoc@gmail.com"},
+    {name = "IO-AtelierTech", email = "ioateliertech@gmail.com"},
 ]
 license = "MIT"
 license-files = ["LICENSE"]

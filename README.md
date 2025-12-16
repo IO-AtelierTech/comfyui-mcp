@@ -1,6 +1,6 @@
 # Comfy MCP Server
 
-[![smithery badge](https://smithery.ai/badge/@lalanikarim/io-ateliertech-comfyui-mcp)](https://smithery.ai/server/@lalanikarim/io-ateliertech-comfyui-mcp)
+[![smithery badge](https://smithery.ai/badge/@lalanikarim/comfyui-mcp)](https://smithery.ai/server/@lalanikarim/comfyui-mcp)
 
 > MCP server for comprehensive ComfyUI workflow automation, management, and image generation.
 
@@ -24,8 +24,8 @@ This server provides Claude Code (and other MCP clients) with full access to Com
 
 ```bash
 # Install from source
-git clone https://github.com/DanEscher98/io-ateliertech-comfyui-mcp.git
-cd io-ateliertech-comfyui-mcp
+git clone https://github.com/DanEscher98/comfyui-mcp.git
+cd comfyui-mcp
 uv sync
 ```
 
@@ -65,7 +65,7 @@ export OUTPUT_MODE=file
   "mcpServers": {
     "ComfyUI": {
       "command": "uv",
-      "args": ["--directory", "/path/to/io-ateliertech-comfyui-mcp", "run", "io-ateliertech-comfyui-mcp"],
+      "args": ["--directory", "/path/to/comfyui-mcp", "run", "comfyui-mcp"],
       "env": {
         "COMFY_URL": "http://localhost:8188",
         "COMFY_WORKFLOWS_DIR": "/path/to/workflows-api",
@@ -427,4 +427,4 @@ MIT License - see [LICENSE](LICENSE) file.
 
 ## Credits
 
-Originally forked from [@lalanikarim/io-ateliertech-comfyui-mcp](https://github.com/lalanikarim/io-ateliertech-comfyui-mcp).
+Originally forked from [@lalanikarim/comfyui-mcp](https://github.com/lalanikarim/comfyui-mcp).
