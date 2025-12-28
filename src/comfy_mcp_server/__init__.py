@@ -6,10 +6,10 @@ This server provides comprehensive ComfyUI integration for Claude Code:
 - Workflow execution and creation
 - Full workflow automation capabilities
 
-Version: 0.2.0
+Version: 0.2.2
 """
 
-__version__ = "0.2.0"
+__version__ = "0.2.2"
 
 import logging
 

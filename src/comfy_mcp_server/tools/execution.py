@@ -8,7 +8,8 @@ import json
 import urllib
 from pathlib import Path
 
-from mcp.server.fastmcp import Context, Image
+from mcp.server.fastmcp import Context
+from mcp.server.fastmcp.utilities.types import Image
 from pydantic import Field
 
 from ..api import comfy_get, comfy_post, get_file_url, poll_for_result
@@ -30,7 +31,7 @@ def register_execution_tools(mcp):
         inputs: dict = Field(default=None, description="Node input overrides"),
         output_node_id: str = Field(default=None, description="Output node ID"),
         ctx: Context = None,
-    ) -> Image | str:
+    ):
         """Execute a saved workflow file.
 
         Args:
@@ -84,7 +85,7 @@ def register_execution_tools(mcp):
         workflow: dict = Field(description="Complete workflow dict"),
         output_node_id: str = Field(description="Node ID to get output from"),
         ctx: Context = None,
-    ) -> Image | str:
+    ):
         """Execute an arbitrary workflow dict.
 
         Args:
@@ -110,7 +111,7 @@ def register_execution_tools(mcp):
     def generate_image(
         prompt: str = Field(description="Text prompt for image generation"),
         ctx: Context = None,
-    ) -> Image | str:
+    ):
         """Generate an image using the default workflow.
 
         This is a simplified interface for quick image generation.
@@ -206,7 +207,7 @@ def register_execution_tools(mcp):
         prompt_id: str = Field(description="Prompt ID"),
         output_node_id: str = Field(description="Output node ID"),
         ctx: Context = None,
-    ) -> Image | str:
+    ):
         """Get the result image from a completed prompt.
 
         Args:
@@ -250,7 +251,7 @@ def register_execution_tools(mcp):
             return f"Error: {e}"
 
 
-def _execute_workflow(workflow: dict, output_node_id: str, ctx: Context | None) -> Image | str:
+def _execute_workflow(workflow: dict, output_node_id: str, ctx: Context | None):
     """Internal function to execute workflow and return result."""
     # Submit workflow
     status, resp_data = comfy_post("/prompt", {"prompt": workflow})
